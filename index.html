@@ -176,6 +176,46 @@
   #wishAddBtn{padding:.9rem 1.3rem;border:none;border-radius:14px;background:var(--rose-deep);color:#fff;
     font-family:inherit;font-size:.95rem;cursor:pointer;transition:all .25s;white-space:nowrap}
   #wishAddBtn:hover{background:var(--rose-dark);transform:translateY(-2px)}
+  /* ===== HỘP QUÀ ===== */
+  .gift-wrap{text-align:center;margin:2.5rem 0 0}
+  .gift{position:relative;width:180px;height:185px;margin:0 auto;cursor:pointer;transition:transform .3s}
+  .gift:hover{transform:scale(1.06) rotate(-2deg)}
+  .gift.open{cursor:default}
+  .gift-body{position:absolute;bottom:0;left:20px;width:140px;height:105px;background:linear-gradient(135deg,#e08aa5,var(--rose-deep));border-radius:10px;box-shadow:0 12px 28px rgba(190,80,110,.35)}
+  .gift-ribbon-v{position:absolute;left:50%;top:0;transform:translateX(-50%);width:28px;height:100%;background:rgba(255,255,255,.55)}
+  .gift-ribbon-h{position:absolute;left:0;top:50%;transform:translateY(-50%);width:100%;height:28px;background:rgba(255,255,255,.55)}
+  .gift-lid{position:absolute;top:42px;left:10px;width:160px;height:38px;background:linear-gradient(135deg,#f0a8bf,var(--rose-deep));border-radius:10px;box-shadow:0 6px 16px rgba(190,80,110,.3);transition:all .7s cubic-bezier(.34,1.56,.64,1);z-index:2}
+  .gift-lid::after{content:'';position:absolute;left:50%;top:0;transform:translateX(-50%);width:28px;height:100%;background:rgba(255,255,255,.55)}
+  .gift.open .gift-lid{transform:translateY(-85px) rotate(-20deg);opacity:0}
+  .gift-bow{position:absolute;top:-16px;left:50%;transform:translateX(-50%)}
+  .gift-bow::before,.gift-bow::after{content:'';position:absolute;bottom:8px;width:36px;height:28px;border:8px solid #fff;border-radius:50%}
+  .gift-bow::before{right:2px;transform:rotate(-30deg)}
+  .gift-bow::after{left:2px;transform:rotate(30deg)}
+  .gift-knot{position:absolute;top:-18px;left:50%;transform:translateX(-50%);width:22px;height:22px;background:#fff;border-radius:50%;box-shadow:0 2px 6px rgba(0,0,0,.15)}
+  .gift-glow{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);width:120px;height:80px;background:radial-gradient(ellipse,rgba(255,220,150,.95),rgba(255,200,150,0));opacity:0;transition:opacity .8s;pointer-events:none}
+  .gift.open .gift-glow{opacity:1;animation:glowPulse 1.6s ease-in-out infinite}
+  @keyframes glowPulse{50%{opacity:.45}}
+  .gift-hint{margin-top:1rem;color:var(--rose-deep);font-size:.95rem}
+  .gift.open + .gift-hint{display:none}
+  .confetti{position:fixed;width:9px;height:13px;z-index:9999;pointer-events:none;border-radius:2px;top:0;left:0}
+  /* ===== PHIẾU MUA HÀNG ===== */
+  .voucher{display:none;max-width:430px;margin:0 auto;background:#fffdf8;border-radius:14px;padding:1.6rem 1.6rem 1.4rem;box-shadow:0 18px 45px rgba(190,80,110,.28);transform:rotate(-1.5deg);font-size:.95rem;color:var(--brown)}
+  .voucher.show{display:block;animation:voucherIn .8s cubic-bezier(.34,1.4,.64,1)}
+  @keyframes voucherIn{from{opacity:0;transform:translateY(40px) rotate(-1.5deg) scale(.92)}to{opacity:1;transform:translateY(0) rotate(-1.5deg) scale(1)}}
+  .voucher-shop{font-size:1.25rem;font-weight:700;color:var(--rose-dark);display:flex;align-items:center;gap:.5rem;justify-content:center}
+  .tiktok-badge{font-size:.68rem;font-weight:700;background:#111;color:#fff;padding:.22rem .6rem;border-radius:20px;letter-spacing:.04em}
+  .voucher-title{text-align:center;letter-spacing:.25em;font-size:.78rem;color:#a08;margin:1rem 0 .4rem;font-weight:600}
+  .voucher-meta{border-top:2px dashed #e8c9d4;border-bottom:2px dashed #e8c9d4;padding:.7rem 0;margin-bottom:.3rem}
+  .voucher-meta div{display:flex;justify-content:space-between;padding:.25rem 0;font-size:.9rem}
+  .voucher-meta span{color:#a58}
+  .paid{color:#2e9e5b}
+  .voucher-items{padding:.5rem 0}
+  .vitem{display:flex;justify-content:space-between;gap:1rem;padding:.45rem 0;border-bottom:1px dotted #ecd9e0;font-size:.92rem;text-align:left}
+  .vitem b{color:var(--rose-deep);white-space:nowrap}
+  .voucher-row{display:flex;justify-content:space-between;padding:.4rem 0;font-size:.92rem}
+  .voucher-total{display:flex;justify-content:space-between;padding:.7rem 0 .3rem;margin-top:.4rem;border-top:2px dashed #e8c9d4;font-weight:700;font-size:1.02rem;color:var(--rose-dark)}
+  .voucher-recv{text-align:center;margin-top:.8rem;font-size:.9rem}
+  .voucher-note{text-align:center;font-size:.8rem;color:#b89;margin-top:.6rem;font-style:italic}
   .wishlist li .del{margin-left:auto;color:var(--rose-deep);font-size:1.3rem;line-height:1;cursor:pointer;
     opacity:.55;flex-shrink:0;padding:.2rem}
   .wishlist li .del:hover{opacity:1}
@@ -521,6 +561,48 @@
   </div>
 </section>
 
+<!-- ================= HỘP QUÀ ================= -->
+<section class="chapter gated" id="giftbox">
+  <div class="inner">
+    <div class="chapter-num reveal">Quà tặng</div>
+    <h2 class="reveal delay1">Một món quà nhỏ 🎁</h2>
+    <p class="reveal delay2">Anh có đặt một món quà cho Ỉn nè.<br>Bấm vào hộp để mở ra xem nhé.</p>
+    <div class="gift-wrap reveal delay3">
+      <div class="gift" id="gift">
+        <div class="gift-glow"></div>
+        <div class="gift-body">
+          <div class="gift-ribbon-v"></div>
+          <div class="gift-ribbon-h"></div>
+        </div>
+        <div class="gift-lid">
+          <div class="gift-bow"></div>
+          <div class="gift-knot"></div>
+        </div>
+      </div>
+      <p class="gift-hint">👆 bấm vào hộp quà</p>
+    </div>
+    <div class="voucher" id="voucher">
+      <div class="voucher-shop">🧸 LubyLab <span class="tiktok-badge">TikTok Shop</span></div>
+      <div class="voucher-title">— PHIẾU MUA HÀNG —</div>
+      <div class="voucher-meta">
+        <div><span>Mã đơn hàng</span><b>#LUBY1NAMIU</b></div>
+        <div><span>Ngày đặt</span><b>19/10/2026</b></div>
+        <div><span>Trạng thái</span><b class="paid">Đã thanh toán ✅</b></div>
+      </div>
+      <div class="voucher-items">
+        <div class="vitem"><span>1× Tình yêu vô điều kiện</span><b>Vô giá</b></div>
+        <div class="vitem"><span>1× Cái ôm ấm áp mỗi ngày</span><b>Vô giá</b></div>
+        <div class="vitem"><span>1× Người yêu nấu ăn dở nhưng chăm chỉ</span><b>Vô giá</b></div>
+        <div class="vitem"><span>1× Lời hứa không bao giờ quay xe</span><b>Vô giá</b></div>
+      </div>
+      <div class="voucher-row"><span>Phí vận chuyển</span><b>Miễn phí 🚚</b></div>
+      <div class="voucher-total"><span>Tổng cộng</span><b>1 năm yêu thương 💖</b></div>
+      <div class="voucher-recv">Người nhận: <b>Ỉn</b> &nbsp;·&nbsp; Người gửi: <b>Long</b></div>
+      <div class="voucher-note">* Đơn hàng không hỗ trợ hoàn trả — vì người bán không nỡ nhận lại 😌</div>
+    </div>
+  </div>
+</section>
+
 <footer class="gated">
   Được viết bằng <span class="heart">♥</span> và 365 ngày yêu thương
 </footer>
@@ -589,6 +671,12 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
 /* ============ QUIZ: ĐÚNG MỚI ĐƯỢC CUỘN XUỐNG ============ */
 (function(){
+  // Mỗi lần vào lại là trạng thái mới: không nhớ vị trí scroll, không nhớ đáp án quiz
+  if('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  window.scrollTo(0, 0);
+  try{ localStorage.removeItem('ky_niem_quiz1_done'); }catch(e){} // dọn key cache cũ nếu còn
+  window.addEventListener('pageshow', (e)=>{ if(e.persisted) window.location.reload(); }); // tắt bfcache
+
   const quiz = document.getElementById('quiz1');
   const msg = quiz.querySelector('.msg');
   const quizSection = quiz.closest('section');
@@ -733,6 +821,42 @@ const PASSCODE = '19102025'; // [SỬA] mật khẩu = ngày tỏ tình (ddmmyyy
   }
   document.getElementById('passBtn').addEventListener('click', tryUnlock);
   input.addEventListener('keydown', e=>{ if(e.key === 'Enter') tryUnlock(); });
+})();
+
+/* ============ HỘP QUÀ ============ */
+(function(){
+  const gift = document.getElementById('gift');
+  const voucher = document.getElementById('voucher');
+  if(!gift || !voucher) return;
+  let opened = false;
+  function burst(x, y){
+    const colors = ['#d4698a','#f4a7c3','#ffd166','#a8e6cf','#ffffff','#f08bb0'];
+    for(let i=0;i<50;i++){
+      const p = document.createElement('div');
+      p.className = 'confetti';
+      p.style.background = colors[i % colors.length];
+      p.style.left = x + 'px'; p.style.top = y + 'px';
+      document.body.appendChild(p);
+      const a = Math.random()*Math.PI*2, v = 5 + Math.random()*7;
+      let vx = Math.cos(a)*v, vy = Math.sin(a)*v - 4, life = 0;
+      const t = setInterval(()=>{
+        life++;
+        vy += .28; vx *= .985;
+        p.style.transform = 'translate(' + (vx*life) + 'px,' + (vy*life) + 'px) rotate(' + (life*12) + 'deg)';
+        p.style.opacity = Math.max(0, 1 - life/75);
+        if(life > 75){ clearInterval(t); p.remove(); }
+      }, 16);
+    }
+  }
+  gift.addEventListener('click', ()=>{
+    if(opened) return;
+    opened = true;
+    gift.classList.add('open');
+    const r = gift.getBoundingClientRect();
+    burst(r.left + r.width/2, r.top + 40);
+    setTimeout(()=>{ voucher.classList.add('show'); }, 450);
+    setTimeout(()=>{ voucher.scrollIntoView({behavior:'smooth', block:'center'}); }, 1000);
+  });
 })();
 
 /* ============ NHẠC NỀN ============ */
