@@ -589,7 +589,6 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
 /* ============ QUIZ: ĐÚNG MỚI ĐƯỢC CUỘN XUỐNG ============ */
 (function(){
-  const LS_QUIZ = 'ky_niem_quiz1_done';
   const quiz = document.getElementById('quiz1');
   const msg = quiz.querySelector('.msg');
   const quizSection = quiz.closest('section');
@@ -607,9 +606,6 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
     if(window.scrollY > max) window.scrollTo(0, Math.max(0, max));
   }, {passive:true});
 
-  // Đã từng trả lời đúng → mở sẵn, không phải làm lại
-  try{ if(localStorage.getItem(LS_QUIZ) === '1') openAll(); }catch(e){}
-
   btns.forEach(btn=>{
     btn.addEventListener('click', ()=>{
       if(btn.dataset.ok){
@@ -618,7 +614,6 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
         btns.forEach(b=>b.disabled = true);
         btn.style.background = '#d4698a'; btn.style.color = '#fff';
         openAll();
-        try{ localStorage.setItem(LS_QUIZ, '1'); }catch(e){}
         setTimeout(()=>document.getElementById('chap2').scrollIntoView({behavior:'smooth'}), 1200);
       }else{
         msg.textContent = 'Sai rồi, thử lại nào 😝';
